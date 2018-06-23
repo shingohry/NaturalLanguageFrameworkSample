@@ -35,7 +35,7 @@ class ViewController: UIViewController {
         wordTokenizer.enumerateTokens(in: text.startIndex..<text.endIndex) { tokenRange, _ in
             // 4. In the enumeration block, take a substring of the original text at tokenRange to obtain each word.
             // 5. Run this code to print out each word in text on a new line.
-            print(tokenRange, text[tokenRange])
+            print( text[tokenRange])
             return true
         }
         
@@ -120,6 +120,54 @@ class ViewController: UIViewController {
         let scriptOptions: NLTagger.Options = [.omitPunctuation, .omitWhitespace]
         scriptTagger.enumerateTags(in: text.startIndex..<text.endIndex, unit: .word, scheme: .script, options: scriptOptions) { tag, tokenRange in
             if let tag = tag {
+                print("\(text[tokenRange]): \(tag.rawValue)")
+            }
+            return true
+        }
+    }
+    
+    @IBAction func identifyPeoplePlacesOrganizations(_ sender: Any) {
+        /**
+         https://developer.apple.com/documentation/naturallanguage/identifying_people_places_and_organizations
+         
+         Identifying named entities in natural language text can help make your app more intelligent. For example, a messaging app might look for names of people and places in text in order to display related information like contact information or directions.
+         
+         The example and accompanying steps below show how to use NLTagger to enumerate over natural language text and identify any named person, place, or organization.
+         */
+        print("\n---identifyPeoplePlacesOrganizations 1--")
+        let text = "The American Red Cross was established in Washington, D.C., by Clara Barton."
+        // 1. Create an instance of NLTagger, specifying nameType as the tag scheme to be used.
+        let tagger = NLTagger(tagSchemes: [.nameType])
+        // 2. Set the string property of the linguistic tagger to the natural language text.
+        tagger.string = text
+        // 3. Create the options to omit punctuation, omit whitespace, and join names.
+        let options: NLTagger.Options = [.omitPunctuation, .omitWhitespace, .joinNames]
+        // 4. Enumerate over the entire range of the string, specifying word as the tag unit and nameType as the tag scheme, and the tagger options.
+        let tags: [NLTag] = [.personalName, .placeName, .organizationName]
+        tagger.enumerateTags(in: text.startIndex..<text.endIndex, unit: .word, scheme: .nameType, options: options) { tag, tokenRange in
+            // 5. In the enumeration block, if the tag is one of the types in tags, then take a substring of the original text at tokenRange to obtain the named entity.
+            if let tag = tag, tags.contains(tag) {
+                // 6. Run this code to print out each name and its type on a new line.
+                print("\(text[tokenRange]): \(tag.rawValue)")
+            }
+            return true
+        }
+        
+        print("\n---identifyPeoplePlacesOrganizations 2--")
+        let text2 = "トヨタ自動車株式会社は、日本の大手自動車メーカーである。"
+        // 1. Create an instance of NLTagger, specifying nameType as the tag scheme to be used.
+        let tagger2 = NLTagger(tagSchemes: [.nameType])
+        tagger2.setLanguage(.japanese, range: text2.range(of: text2)!)
+        // 2. Set the string property of the linguistic tagger to the natural language text.
+        tagger2.string = text2
+        // 3. Create the options to omit punctuation, omit whitespace, and join names.
+        let options2: NLTagger.Options = [.omitPunctuation, .omitWhitespace, .joinNames]
+        // 4. Enumerate over the entire range of the string, specifying word as the tag unit and nameType as the tag scheme, and the tagger options.
+        let tags2: [NLTag] = [.personalName, .placeName, .organizationName]
+        tagger2.enumerateTags(in: text.startIndex..<text.endIndex, unit: .word, scheme: .nameType, options: options2) { tag, tokenRange in
+            // 5. In the enumeration block, if the tag is one of the types in tags, then take a substring of the original text at tokenRange to obtain the named entity.
+            if let tag = tag, tags2.contains(tag) {
+                // 6. Run this code to print out each name and its type on a new line.
                 print("\(text[tokenRange]): \(tag.rawValue)")
             }
             return true
