@@ -18,13 +18,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cfe-XZ-tj9">
-                                <rect key="frame" x="157" y="318.5" width="61" height="30"/>
+                                <rect key="frame" x="71.5" y="294.5" width="232" height="78"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tvs-rP-Ful">
-                                        <rect key="frame" x="0.0" y="0.0" width="61" height="30"/>
-                                        <state key="normal" title="Tokenize"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="232" height="48"/>
+                                        <state key="normal">
+                                            <string key="title">Tokenizing Natural Language Text
+</string>
+                                        </state>
                                         <connections>
-                                            <action selector="tokenizeButtonDidTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="F7U-xo-VtI"/>
+                                            <action selector="tokenize:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e0B-NT-mqc"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nq6-EC-yhK">
+                                        <rect key="frame" x="0.0" y="48" width="232" height="30"/>
+                                        <state key="normal" title="Identifying Parts of Speech"/>
+                                        <connections>
+                                            <action selector="identify:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Lix-TN-wqj"/>
                                         </connections>
                                     </button>
                                 </subviews>
