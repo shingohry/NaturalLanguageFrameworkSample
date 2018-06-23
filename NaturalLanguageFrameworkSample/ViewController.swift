@@ -25,6 +25,7 @@ class ViewController: UIViewController {
 
         All human beings.
         """
+//        let text = "自然言語のテキストを分析し、その言語固有のメタデータを推論する。"
         
         print("---word---")
         // 1. Create an instance of NLTokenizer, specifying NLTokenUnit.word as the unit to tokenize.
@@ -74,6 +75,7 @@ class ViewController: UIViewController {
          */
         
         let text = "The ripe taste of cheese improves with age."
+//        let text = "自然言語のテキストを分析し、その言語固有のメタデータを推論する。"
         
         print("\n---lexicalClass--")
         // 1. Create an instance of NLTagger, specifying lexicalClass as the tag scheme to be used.
