@@ -19,13 +19,8 @@ class ViewController: UIViewController {
          
          The example and accompanying steps below show how you use NLTokenizer to enumerate over the words in natural language text.
          */
-        let text = """
-        All human beings are born free and equal in dignity and rights.
-        They are endowed with reason and conscience and should act towards one another in a spirit of brotherhood.
-
-        All human beings.
-        """
-//        let text = "自然言語のテキストを分析し、その言語固有のメタデータを推論する。"
+        let text = "Use the Natural Language framework to perform tasks like language and script identification, tokenization, lemmatization, parts-of-speech tagging, and named entity recognition."
+//        let text = "Natural Languageフレームワークは、言語やスクリプトの識別、トークン化、字形化、品詞タグ付け、名前付きエンティティ認識などのタスクを実行します。"
         
         print("---word---")
         // 1. Create an instance of NLTokenizer, specifying NLTokenUnit.word as the unit to tokenize.
@@ -74,8 +69,8 @@ class ViewController: UIViewController {
          The example below shows how to use NLTagger to enumerate over natural language text and identify the part of speech for each word.
          */
         
-        let text = "The ripe taste of cheese improves with age."
-//        let text = "自然言語のテキストを分析し、その言語固有のメタデータを推論する。"
+//        let text = "Use the Natural Language framework to perform tasks like language and script identification, tokenization, lemmatization, parts-of-speech tagging, and named entity recognition."
+        let text = "Natural Languageフレームワークは、言語やスクリプトの識別、トークン化、字形化、品詞タグ付け、名前付きエンティティ認識などのタスクを実行します。"
         
         print("\n---lexicalClass--")
         // 1. Create an instance of NLTagger, specifying lexicalClass as the tag scheme to be used.
@@ -137,7 +132,7 @@ class ViewController: UIViewController {
          The example and accompanying steps below show how to use NLTagger to enumerate over natural language text and identify any named person, place, or organization.
          */
         print("\n---identifyPeoplePlacesOrganizations 1--")
-        let text = "The American Red Cross was established in Washington, D.C., by Clara Barton."
+        let text = "Apple Inc. is an American technology company headquartered in Cupertino, California."
         // 1. Create an instance of NLTagger, specifying nameType as the tag scheme to be used.
         let tagger = NLTagger(tagSchemes: [.nameType])
         // 2. Set the string property of the linguistic tagger to the natural language text.
@@ -156,7 +151,7 @@ class ViewController: UIViewController {
         }
         
         print("\n---identifyPeoplePlacesOrganizations 2--")
-        let text2 = "トヨタ自動車株式会社は、日本の大手自動車メーカーである。"
+        let text2 = "アップルはカリフォルニア州クパチーノに本拠を置くアメリカのテクノロジー企業です。"
         // 1. Create an instance of NLTagger, specifying nameType as the tag scheme to be used.
         let tagger2 = NLTagger(tagSchemes: [.nameType])
         tagger2.setLanguage(.japanese, range: text2.range(of: text2)!)
